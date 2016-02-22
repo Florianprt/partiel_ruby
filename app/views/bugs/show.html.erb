@@ -1,14 +1,27 @@
+<table class="table">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @bug.name %>
-</p>
+	<p>
+	  <strong>Name:</strong>
+	  <%= @bug.name %>
+	</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @bug.description %>
-</p>
+	<p>
+	  <strong>Description:</strong>
+	  <%= @bug.description %>
+	</p>
+</table>
 
-<%= link_to 'Edit', edit_bug_path(@bug) %> |
-<%= link_to 'Back', bugs_path %>
+<button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_bug_path(@bug) %></button>
+<button type="button" class="btn btn-default"><%= link_to 'Back', bugs_path %></button>
+
+	<div class="col-md-8">
+	    <% if @bug.microposts.any? %>
+	      <h3>Microposts (<%= @bug.microposts.count %>)</h3>
+	      <ol class="microposts">
+	        <%= render @microposts %>
+	      </ol>
+	    <% end %>
+	</div>
+
+

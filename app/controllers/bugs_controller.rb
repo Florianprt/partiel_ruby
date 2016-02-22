@@ -1,4 +1,7 @@
 class BugsController < ApplicationController
+
+  http_basic_authenticate_with name: "login", password: "secret"
+
   before_action :set_bug, only: [:show, :edit, :update, :destroy]
 
   # GET /bugs
@@ -10,6 +13,7 @@ class BugsController < ApplicationController
   # GET /bugs/1
   # GET /bugs/1.json
   def show
+    @bug = Bug.find(params[:id])
   end
 
   # GET /bugs/new

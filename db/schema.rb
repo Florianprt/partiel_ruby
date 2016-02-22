@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222090045) do
+ActiveRecord::Schema.define(version: 20160222102659) do
 
   create_table "bugs", force: :cascade do |t|
     t.string   "name"
@@ -19,5 +19,15 @@ ActiveRecord::Schema.define(version: 20160222090045) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "microposts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "bug_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "microposts", ["bug_id", "created_at"], name: "index_microposts_on_bug_id_and_created_at"
+  add_index "microposts", ["bug_id"], name: "index_microposts_on_bug_id"
 
 end
